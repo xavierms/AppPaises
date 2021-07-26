@@ -17,9 +17,10 @@
 
 <hr>
 
-<!-- Despues agregar un event con script -->
-<div class="alert alert-danger">
-    No se encontró nada con el termino 
+
+<div *ngIf = "hayError" 
+    class="alert alert-danger">
+    No se encontró nada con el termino: {{termino}} 
 </div>
 
 <div class="row">
