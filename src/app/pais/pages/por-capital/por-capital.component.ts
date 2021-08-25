@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { PaisService } from '../../services/pais.service';
+import { Country } from '../../interfaces/pais.interface';
 
 @Component({
   selector: 'app-por-capital',
@@ -6,11 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class PorCapitalComponent implements OnInit {
+export class PorCapitalComponent  {
 
-  constructor() { }
+  termino    : string    = "";
+  hayError   : boolean   = false;
+  paises  : Country[] = [];
+  placeholder: string= ''
 
-  ngOnInit(): void {
-  }
+  constructor( private paisService: PaisService ) { }
 
+ buscar(termino: string){
+   this.termino = termino;
+   this.hayError = false;
+   this.paisService.buscarCapital( this.termino )
+                      .subscribe( (paises) => {
+            console.log(paises);
+             this.paises = paises;
+                   }, (err) =>{
+                        this.hayError  = true;
+                        this.paises = [];
+                      });
+ }
 }

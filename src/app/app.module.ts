@@ -13,7 +13,7 @@ import { LayoutComponent } from './layout/layout.component';
 @NgModule({
   declarations: [
     AppComponent,
-   LayoutComponent
+    LayoutComponent
    
   ],
   imports: [
